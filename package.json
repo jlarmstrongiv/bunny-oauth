@@ -1,0 +1,60 @@
+{
+  "name": "bunny-oauth",
+  "version": "0.0.0",
+  "private": false,
+  "type": "module",
+  "description": "OAuth for Edge Scripting for bunny.net 🐰",
+  "keywords": [
+    "BunnyCDN",
+    "bunny.net",
+    "bunny",
+    "cdn",
+    "bunny-launcher",
+    "typescript",
+    "edge-scripting",
+    "edge",
+    "scripting",
+    "grant",
+    "oauth",
+    "wasm"
+  ],
+  "homepage": "https://bunny-launcher.net/authentication/oauth/",
+  "bugs": "https://github.com/jlarmstrongiv/bunny-oauth/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlarmstrongiv/bunny-oauth.git"
+  },
+  "license": "AGPL-3.0-only",
+  "author": "John L. Armstrong IV",
+  "sideEffects": false,
+  "scripts": {
+    "build:dev": "NODE_ENV=development npx tsx src/bundler",
+    "build": "npx tsx src/bundler",
+    "patch": "npx patch-package grant --exclude='nothing'",
+    "postinstall:local": "npx patch-package",
+    "prepublishOnly": "npm run build",
+    "pretest:deno": "npm run build:dev",
+    "pretest:node": "npm run build:dev",
+    "test:deno": "deno run src/test/index.test.ts",
+    "test:node": "npx tsx src/test/index.test.ts"
+  },
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "devDependencies": {
+    "@tsconfig/node20": "20.1.4",
+    "@types/fs-extra": "11.0.4",
+    "@types/node": "22.9.0",
+    "esbuild": "0.24.0",
+    "fs-extra": "11.2.0",
+    "grant": "5.4.23",
+    "patch-package": "8.0.0",
+    "tsx": "4.19.2",
+    "typescript": "5.6.3"
+  },
+  "packageManager": "npm@10.9.0",
+  "engines": {
+    "node": ">=20"
+  }
+}
